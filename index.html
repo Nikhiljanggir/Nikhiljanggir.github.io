@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      margin: 0;
+    }
+    
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    form {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    input[type="file"],
+    select {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    #resultContainer {
+      display: none;
+      margin-top: 20px;
+    }
+    
+    h2 {
+      margin-top: 0;
+    }
+    
+    #resultImageContainer {
+      margin-bottom: 10px;
+    }
+    
+    #downloadLink {
+      display: block;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      text-align: center;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+    
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    #keywords {
+      margin-top: 20px;
+      font-size: 12px;
+    }
+  </style>
+  <script src="imageConverter.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Image Converter</h1>
+  </header>
+  
+  <main>
+    <form id="converterForm" enctype="multipart/form-data">
+      <label for="imageFile">Select Image File:</label>
+      <input type="file" id="imageFile" accept="image/*" required>
+      
+      <label for="outputFormat">Output Format:</label>
+      <select id="outputFormat" required>
+        <option value="">Select Output Format</option>
+        <option value="jpeg">JPEG</option>
+        <option value="png">PNG</option>
+        <option value="gif">GIF</option>
+        <option value="bmp">BMP</option>
+        <option value="tiff">TIFF</option>
+        <option value="webp">WebP</option>
+        <option value="svg">SVG</option>
+        <option value="jp2">JP2 (JPEG 2000)</option>
+        <option value="exif">EXIF</option>
+        <option value="ico">ICO (Icon)</option>
+        <option value="pdf">PDF</option>
+        <option value="psd">PSD (Photoshop)</option>
+        <option value="ai">AI (Adobe Illustrator)</option>
+        <option value="eps">EPS (Encapsulated PostScript)</option>
+        <option value="svgz">SVGZ (Compressed SVG)</option>
+        <option value="raw">RAW (Camera RAW)</option>
+        <option value="dds">DDS (DirectDraw Surface)</option>
+        <option value="tga">TGA (Targa)</option>
+        <option value="jxr">JXR (JPEG XR)</option>
+        <option value="heic">HEIC (High Efficiency Image Format)</option>
+        <option value="avif">AVIF (AV1 Image File Format)</option>
+        <option value="pcx">PCX</option>
+        <option value="wbmp">WBMP (Wireless Bitmap)</option>
+        <option value="hdr">HDR (High Dynamic Range)</option>
+        <option value="exr">EXR (OpenEXR)</option>
+        <option value="fits">FITS (Flexible Image Transport System)</option>
+        <option value="pnm">PNM (Portable Anymap)</option>
+        <option value="ppm">PPM (Portable Pixmap)</option>
+        <option value="j2k">J2K (JPEG 2000 Codestream)</option>
+        <option value="jp2">JP2 (JPEG 2000 Image File)</option>
+        <option value="jpm">JPM (JPEG 2000 Compound Image File)</option>
+        <option value="jpx">JPX (JPEG 2000 Extended Image File)</option>
+        <option value="mj2">MJ2 (Motion JPEG 2000)</option>
+        <option value="mjp2">MJP2 (Motion JPEG 2000 Image File)</option>
+        <option value="wmf">WMF (Windows Metafile)</option>
+        <option value="emf">EMF (Enhanced Metafile)</option>
+        <option value="ico">ICO (Icon)</option>
+        <option value="svg">SVG (Scalable Vector Graphics)</option>
+        <option value="ase">ASE (Adobe Swatch Exchange)</option>
+        <option value="ase">ASE (Adobe Swatch Exchange)</option>
+        <option value="ase">ASE (Adobe Swatch Exchange)</option>
+        <option value="ase">ASE (Adobe Swatch Exchange)</option>
+        <option value="ase">ASE (Adobe Swatch Exchange)</option>
+        <option value="cdw">CDW (KOMPAS 3D)</option>
+        <option value="cpt">CPT (Corel PHOTO-PAINT)</option>
+        <option value="dcm">DCM (DICOM Medical Image)</option>
+        <option value="dds">DDS (DirectDraw Surface)</option>
+        <option value="djvu">DJVU (DjVu)</option>
+        <option value="dng">DNG (Digital Negative)</option>
+        <option value="emf">EMF (Enhanced Metafile)</option>
+        <option value="exr">EXR (OpenEXR)</option>
+        <option value="fh">FH (FreeHand)</option>
+        <option value="flif">FLIF (Free Lossless Image Format)</option>
+<option value="gbr">GBR (Gerber Image)</option>
+<option value="hdr">HDR (High Dynamic Range)</option>
+<option value="heif">HEIF (High Efficiency Image Format)</option>
+<option value="icns">ICNS (Apple Icon Image)</option>
+<option value="iff">IFF (Interchange File Format)</option>
+<option value="indd">INDD (Adobe InDesign)</option>
+<option value="jng">JNG (JPEG Network Graphics)</option>
+<option value="jpc">JPC (JPEG 2000 Code Stream)</option>
+<option value="jpf">JPF (JPEG 2000 File Format)</option>
+<option value="jpm">JPM (JPEG 2000 Compound Image File)</option>
+<option value="jpx">JPX (JPEG 2000 Extended Image File)</option>
+<option value="jxr">JXR (JPEG XR)</option>
+<option value="kdc">KDC (Kodak Digital Camera Raw Image Format)</option>
+<option value="miff">MIFF (Magick Image File Format)</option>
+<option value="mng">MNG (Multiple-image Network Graphics)</option>
+<option value="ora">ORA (OpenRaster Image)</option>
+<option value="pbm">PBM (Portable Bitmap)</option>
+<option value="pcx">PCX</option>
+<option value="pgm">PGM (Portable Graymap)</option>
+<option value="pict">PICT (Picture)</option>
+<option value="pix">PIX (Alias Image)</option>
+<option value="png">PNG</option>
+<option value="pnm">PNM (Portable Anymap)</option>
+<option value="ppm">PPM (Portable Pixmap)</option>
+<option value="ps">PS (PostScript)</option>
+<option value="psb">PSB (Photoshop Big)</option>
+<option value="psd">PSD (Photoshop)</option>
+<option value="qfx">QFX (QuickLink Fax)</option>
+<option value="ras">RAS (Sun Raster Image)</option>
+<option value="raw">RAW (Camera RAW)</option>
+<option value="rgb">RGB (Raw red, green, blue samples)</option>
+<option value="rgba">RGBA (Raw red, green, blue, alpha samples)</option>
+<option value="sgi">SGI (Silicon Graphics Image)</option>
+<option value="sun">SUN (Sun Raster Graphic)</option>
+<option value="svg">SVG (Scalable Vector Graphics)</option>
+<option value="svgz">SVGZ (Compressed SVG)</option>
+<option value="tga">TGA (Targa)</option>
+<option value="tif">TIF (Tagged Image File Format)</option>
+<option value="tiff">TIFF</option>
+<option value="wbmp">WBMP (Wireless Bitmap)</option>
+<option value="webp">WebP</option>
+<option value="wpg">WPG (WordPerfect Graphics)</option>
+<option value="xpm">XPM (X Pixmap)</option>
+<option value="xwd">XWD (X Window Dump)</option>
+       <option value="xwd">XWD (X Window Dump)</option>
+
+        
+
+
+      </select>
+      
+      <button type="submit">Convert</button>
+    </form>
+
+    <div id="resultContainer">
+      <h2>Conversion Result:</h2>
+      <div id="resultImageContainer"></div>
+      <a id="downloadLink" download>Download Converted Image</a>
+    </div>
+    
+    <footer>
+      <p>Image Converter &copy; 2023. All rights reserved.</p>
+      <div id="keywords">
+        <p>Keywords: image converter, pdf to image converter, word to image converter, image converter to jpg, online image converter, free image converter, transparent image converter, hd image converter, black and white image converter, image converter to png, text to image converter, image converter app, image converter and resizer, image converter AI, image converter Adobe,image converter pdf to image converter word to image converter image converter to jpg online image converter free image converter transparent image converter hd image converter black and white image converter image converter to png text to image converter image converter app image converter and resizer image converter ai image converter adobe image converter avif to jpg image converter app for pc image converter app mac image converter application image converter aspect ratio image converter avif to png ascii image converter ai image converter avs image converter aspect ratio image converter anime image converter animal crossing image converter audio to image converter adobe image converter advanced batch image converter ai image converter to anime image converter black and white image converter bulk image converter bmp image converter base64 image converter below 50kb image converter batch image converter bmp to jpg image converter by size image converter below 100kb image converter black and white to color base64 to image converter blur to clear image converter blur to hd image converter best free image converter binary to image converter bulk image converter base64 to image converter online better quality image converter batch image converter image converter chrome extension image converter color image converter cur image converter color to black and white image converter cartoon image converter cr2 to jpg image converter compressor image converter cm to pixel image converter c# image converter code cartoon image converter clear image converter color blind image converter code to image converter cmyk to rgb image converter circle image converter cross stitch image converter clearer image converter color to black and white image converter canon raw image converter image converter download image converter dpi image converter dds image converter dimensions image converter dng to jpg image converter dxf image converter document image converter drawing image converter dot image converter desktop app doc to image converter docx to image converter dpi image converter dwg to image converter dimension image converter doc to image converter free download image converter day to night image converter drawing to image converter doc to image converter i love pdf image converter extension image converter excel image converter exe image converter english to hindi image converter eps to jpg image converter emz to jpg image converter editor image convert eps file converter image en pdf image emoji converter excel to image converter epub image converter excel to image converter i love pdf english to hindi image converter exe to image converter embroidery image converter eps image converter emoji to image converter esc/pos image converter exe to image converter online image converter free image converter from heic to jpg image converter for cricut image converter free online image converter for mac image converter free download image converter for youtube banner image converter for visio image converter for laser engraving image converter for windows 10 free image converter online free image converter to jpg file to image converter free pdf to image converter free vector image converter free image converter download free image converter 50kb free cartoon image converter free word to image converter image converter github image converter gt image converter gif image converter google image converter gif to jpg image converter jpg image converter gif to png image converter gui with python image converter grayscale what is image converter grayscale image converter gif to image converter google image converter good quality image converter greater than 20 kb image converter gray to color image converter german to english image converter google image converter to pdf gameboy image converter gujarati text to image converter image converter heic to jpg image converter heic to png image converter heic to pdf image converter heic to jpg free image converter high resolution image converter hd image converter hd online image converter height and width image converter html image converter hdr high quality image converter high resolution image converter html to image converter heic image converter hd image converter online higher quality image converter hex to image converter high res image converter height and width of image converter image converter in kb image converter ico image converter into png image converter into jpg image converter into pdf image converter into 50 kb image converter in pixel image converter into text image converter in 100 kb image converter in 50kb image to image converter ico image converter image to hd image converter online image to hd image converter image to 3d image converter i love pdf to image converter image to transparent image converter image to text image converter image to cartoon image converter image to ai image converter image converter jpg to jpeg image converter jpeg image converter jpg to png image converter jfif to jpg image converter jpg to pdf image converter jpg to svg image converter jpeg to svg image converter jpeg to png image converter jfif to png jpg to image converter jpg to png image converter jpg to pdf image converter jpg to hd image converter jpg to image converter free jpg to bitmap image converter jpeg to jpg image converter json to image converter jpg image converter to 100 kb jpg to webp image converter image converter kb image converter kicad image converter kb to jpg convert image kb to pixel convert image kb to bytes image converter 20 kb online online image converter size size of image converter image converter increase size kb to mb image converter kigo image converter kb to mb image converter increase kb to pixels image converter kicad image converter kvisoft pdf to image converter keynote to image converter koikatsu image converter key pixillion image converter kml to image converter image converter linux image converter low to high image converter less than 20 kb image converter link image converter less than 100kb image converter logo image converter less than 2 mb image converter low kb image converter low size image converter less than 30kb low quality image converter low quality to high quality image converter link to image converter landscape to portrait image converter lego image converter lcd image converter lvgl image converter low to high resolution image converter free low pixel to high pixel image converter low mb image converter image converter mac image converter minecraft image converter mb to kb image converter multiple files image converter mod apk image converter mirror image converter ms word image converter mp4 image converter mac os image converter microsoft minecraft image converter mirror image converter ms word to image converter mb to kb image converter minecraft map art image converter male to female image converter online monochrome image converter mp4 to image converter mb to 100 kb image converter mp to kp image converter image converter nef to jpg image converter no limit image converter npm image converter negative image converter nef to jpg free download image converter node image converter node js image name converter image not converting to pdf image converter pro (no ads) apk negative image converter normal to hd image converter nch pixillion image converter normal image to 3d image converter name to image converter notepad to image converter normal to high resolution image converter negative image converter app negative film scanner to digital image converter normal image to mirror image converter image converter online image converter open source image converter offline image converter obj image converter online size image converter online 150 kb image converter ocr image converter online jpeg to jpg image converter online size in 100 kb image converter online in 50kb online pdf to image converter online image converter to jpg online word to image converter online hd image converter online video to image converter online svg image converter online free image converter online image converter to png image converter png image converter program image converter png to jpg image converter plus image converter pdf image converter png to svg image converter pixels image converter pdf to jpg image converter png to jpeg image converter png to webp ppt to image converter pixillion image converter png image converter pixel image converter portrait to landscape image converter powerpoint to image converter pdf to jpg image converter passport size image converter pdf to image converter offline image converter quality image convert qr code image quality converter free image quality converter app convert image quality to 4k convert image quality to low convert image quality jpeg image converter tool qemu photo quality converter free download imagemagick convert quality quality image converter qr code to image converter qemu image converter quick image converter hd quality image converter high quality image converter free bad quality image converter low quality to 4k image converter image converter resolution image converter resize image converter reddit image converter remove background image converter raw to jpg image converter ratio image converter reduce size image converter reduce file size image converter rar to jpg image converter resizer free download rgb to cmyk image converter resize image converter resolution image converter raw image converter raw image converter to jpg ratio image converter right click image converter raw image converter to jpg free download round image converter realistic image converter image converter size image converter software image converter svg image converter svg to jpg image converter svg to png image converter software free download image converter software reddit image converter smaller image converter smaller size image converter size pixels svg image converter size image converter simple image converter square to circle image converter square image converter sd to hd image converter small size image converter systools image converter sketch image converter screenshot to image converter image converter to svg image converter to pdf image converter to text image converter to black and white image converter to gif image converter to jpg free image converter to icon image converter to webp text to image converter online text to image converter ai transparent background image converter tnpsc image converter text to image converter app table to image converter to image converter tiff to image converter image converter url image converter utft image converter under 100 kb image converter upto 50 kb image converter url to jpg image converter ubuntu image converter under 500 kb image converter under 20 kb image converter under 50kb image converter under 1 mb url to image converter unblur image converter uti pan image converter ultra hd image converter upsc image converter under 100 kb image converter url to image converter online unicode image converter ubuntu image converter upscale image converter image converter vector photo image converter video image converter video software image vector converter free image viewer converter image video converter free download image vga converter image converter 565 v2.3 download image data converter ver.5.1.00 video to image converter vector image converter video to image converter online free vector image converter free video to image converter software vertical to horizontal image converter video to image converter apk video to image converter download varbinary to image converter online video to hd image converter image converter webp to jpg image converter webp to png image converter windows image converter windows 10 image converter webp image converter word image converter white background image converter website image converter without losing quality image converter word document word to image converter i love pdf webp image converter webp to jpg image converter white to black image converter white background image converter webp / avif image converter word document to image converter word to pdf image converter word to image converter app image convert xml image converter 1024 x 576 image converter 1080 x 1080 image converter to xmp image convert to xlsx image convert to xls image convert to xaml image to xerox converter image to xlsm converter image converter to 3.5 x 4.5 xml to image converter xps to image converter x ray image converter online xbox image converter xlsx to image converter xn image converter xls to image converter xlsx to image converter online xbm image converter xamarin image converter image converter youtube banner image converter young to old image converter youtube convert image to pdf convert image to text convert image to png convert image to jpg pixillion image converter youtube image convert to yuv image to text converter yandex youtube video to image converter online yandex image converter youtube to image converter online youtube banner image converter youtube link to image converter youtube thumbnail image converter yuv image converter youtube image converter image to youtube logo converter image converter zip to jpg image converter zamzar image convert zip file image convert zip convert image zip to pdf convert image zpl convert image size image to pdf converter zamzar image to word converter zamzar zip to image converter zip to jpg image converter zpl image converter zpl to image converter online zip to image converter online zip to iso image converter zx spectrum image converter image to xml zip file converter online disc image file to zip converter disk image file to zip converter image to pdf converter 0nline image converter image converter to 1024x1024 image converter setup image to pdf converter trackid=sp-006 what is the best image converter image converter 1000x1000 image converter 1920x1080 image converter 100 kb image converter 150 kb image converter 10 kb image converter 10mb image converter 1080p image converter 11zon image converter 18kb 16 bit image converter 100 kb image converter 1024x1024 image converter 150kb image converter 100 mb size image converter 1080p image converter 1000x1000 image converter 10kb image converter 1mb image converter 128x128 image converter image converter 2mb image converter 20kb image converter 200kb image converter 250 kb image converter 200 dpi image converter 2kb image converter 20kb to 50kb image converter 25 kb image converter 200x200 image converter 200kb online 2d to 3d image converter 20kb image converter 250*250 pixel image converter 200x200 image converter 2mb image converter 25kb image converter 2d to 3d image converter app 2x2 image converter 2d to 3d image converter software free download 200kb image converter image converter 300 dpi image converter 3000x3000 image converter 300x300 image converter 3d image converter 3 mb image converter 30kb image converter 300x80 image converter 300kb image converter 35mm*45mm image converter to jpg size 3000x3000 image converter 300x300 image converter 3d image converter 300kb image converter 3d to 2d image converter 3 mb size image converter 300x80 image converter 300 dpi image converter 30 kb image converter 360 image converter image converter 4k image converter 400x400 image converter 400kb image converter 4mb image converter 40 kb image 4k converter ai photo converter 4x6 picture converter 4k convert image 4 mb 4k image converter 40kb image converter 400x400 image converter 400kb image converter 4mb image converter 4k resolution image converter 4x6 image converter 4 megapixel image converter 4.5x3.5 image converter 45 kb image converter image converter 512x512 image converter 565 image converter 50kb image converter 5mb image converter 50 kb online image converter 500kb image converter 500x500 50kb image converter 512x512 image converter 500x500 image converter 500 kb image converter 512*512 image converter 500x500 pixel image converter 5mb image converter 5kb image converter 50 kb image converter online 500*500 pixel image converter online image converter 64x64 image converter 600 dpi image converter 600kb image converter 60kb image data converter 64 bit image converter plus 6.3 free download pdf to image converter 600 dpi image to pdf converter 60 kb advanced batch image converter 64 bit 600*600 pixel image converter 60kb image converter 640x360 image converter 600 dpi image converter 64 bit image converter 600kb image converter 6x3 image converter 680x240 image converter 6cm x 3cm image converter 6*3 cm image converter total image converter 7.1.130 serial key image converter windows 7 image converter to 70kb photo 720p converter image to pdf converter 70 kb 712x430 image converter 720x720 image converter 700kb image converter image data converter windows 7 712 width and 430 height image converter 75 kb image converter 70kb image converter 700 pixels cover image converter 72 dpi image converter 720p image converter 7z to image converter image converter 80 kb image 8k converter photo converter 80kb image converter to 8 bit image to pdf converter 80 kb 800x800 image converter 8mb image converter 80kb image converter image to utf 8 converter 8x8 image converter 8 bit image converter 800 x 800 pixels image converter 8k image converter 80 kb image converter 840 x 840 pixels image converter 800 kb image converter 8 bit grayscale image converter 8 bit to 16 bit image converter image converter 90 kb online image converter 90kb image converter plus 9.0.520 serial key image converter plus 9.0.520 crack pixillion image converter 94fbr 98x98 image converter 90x90 image converter convert image to 96 dpi 90 kb image converter 96x96 image converter image resolution 92 dpi converter 16 9 image converter</p>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
